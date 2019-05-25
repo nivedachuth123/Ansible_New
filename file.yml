@@ -1,0 +1,11 @@
+--- 
+ - name: main yaml file
+   remote_user: ec2-user
+   become: yes
+   hosts: all
+   
+
+
+   roles:
+      - java
+      - tomcat
