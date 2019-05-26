@@ -18,6 +18,6 @@
   - name: start appache-tomcat-7.0.61
     shell: "{{tomcat_name1}}"
   - name: downloading war
-    get_url:
-      url: "{{download_url1}}"
-      dest: "{{war_download}}"
+    get_url: url=https://github.com/nivedachuth123/update/blob/master/sample.war dest=/home/ec2-user/tars
+  - name: copy sample.war
+    shell: cp /home/ec2-user/tars/sample.war /home/ec2-user/tars/apache-tomcat-7.0.61/webapps/

@@ -4,6 +4,4 @@ download_folder: /home/ec2-user/tars
 tomcat_name: "{{download_folder}}/apache-tomcat-7.0.61"
 tomcat_archive: "{{download_folder}}/apache-tomcat-7.0.61.tar.gz"
 tomcat_name1: "{{tomcat_name}}/bin/startup.sh"
-download_url1: https://github.com/nivedachuth123/update.git dest=/home/ec2-user/tars
-war_download: /home/ec2-user/tars
-war_production: "{{tomcat_name}}/webapps"
+
