@@ -4,15 +4,20 @@
     file:
 
      path: /home/ec2-user/tars
-     state: directory  
+     state: directory
+       
   - name: Download Tomcat
-    get_url: url=http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.61/bin/apache-tomcat-7.0.61.tar.gz dest=/home/ec2-user/tars/apache-tomcat-7.0.61.tar.gz
-
+    get_url: 
+      url: "{{download_url}}"
+      dest: "{{tomcat_archive}}"
   - name: Extract archive
-    unarchive: src=/home/ec2-user/tars/apache-tomcat-7.0.61.tar.gz dest=/home/ec2-user/tars
+    unarchive:
+      src: "{{tomcat_archive}}"
+      dest: "{{download_folder}}"
+      remote_src: yes
   - name: start appache-tomcat-7.0.61
-    shell: /home/ec2-user/tars/apache-tomcat-7.0.61/bin/startup.sh
-  - name: download war file
-    get_url: url=https://drive.google.com/file/d/1ArPA8ypfBEb-5OAtjcjlcolYQvCxzoX7/view?usp=sharing dest=/home/ec2-user/tars
-  - name: copy war file
-    shell: cp /home/ec2-user/tars/view /home/ec2-user/tars/apache-tomcat-7.0.61/webapps
+    shell: "{{tomcat_name1}}"
+  - name: downloading war
+    get_url:
+      url: "{{download_url1}}"
+      dest: "{{war_download}}"
