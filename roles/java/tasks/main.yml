@@ -1,18 +1,24 @@
 ---
+      
+    - name: file creation
+      tags:
+        - java_setup
+      file:
+        path: /home/ec2-user/tars
+        state: directory
     - name: Download Java
-
+      
       get_url:
         url: "{{download_url}}"
         dest: "{{java_archive}}"
     
 
-    - name: Unpack archive
-      
+    - name: Extract archive
       unarchive:
-        src: "{{java_archive}}"
+        src: "{{tomcat_archive}}"
         dest: "{{download_folder}}"
         remote_src: yes
-
+      
     - name: Fix ownership
       file: state=directory path={{java_name}} owner=root group=root recurse=yes
 
