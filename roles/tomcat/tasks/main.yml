@@ -1,21 +1,19 @@
 ---
-       
+  - name: file creation
+
+    file:
+      path: /home/ec2-user/tars
+      state: directory
+    
   - name: Download Tomcat
-    tags:
-      - tomcat_setup
     get_url: 
-      url: "{{download_url}}"
-      dest: "{{tomcat_archive}}"
+      url:  http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.61/bin/apache-tomcat-7.0.61.tar.gz
+      dest: /home/ec2-user/tars/apache-tomcat-7.0.61.tar.gz
+
   - name: Extract archive
     unarchive:
       src: "{{tomcat_archive}}"
       dest: "{{download_folder}}"
       remote_src: yes
-  - name: start appache-tomcat-7.0.61
-    shell: "{{tomcat_name1}}"
-  - name: downloading war
-    get_url: url=https://github.com/nivedachuth123/update/blob/master/sample.war dest=/home/ec2-user/tars
-  - name: copy sample.war
-    shell: cp /home/ec2-user/tars/sample.war /home/ec2-user/tars/apache-tomcat-7.0.61/webapps/
-  - name: executing war file
-    shell: java -jar /home/ec2-user/tars/sample.war httpPort:9090
+  
+

@@ -1,0 +1,11 @@
+ - name: copy sample.war
+   copy:
+     src: /home/ec2-user/sample.war
+     dest: /home/ec2-user/tars/apache-tomcat-7.0.61/webapps
+
+ - name: restart appache-tomcat-7.0.61
+   shell: nohup ./bin/startup.sh
+   args:
+     chdir: /home/ec2-user/tars/apache-tomcat-7.0.61
+   become: yes
+   
